@@ -26,4 +26,6 @@ plot(VarName6), grid on;
 figure;
 plot(VarName7), grid on;
 
+scatterplot ( hilbert (VarName7)), grid on;
+
 fclose(fid);
