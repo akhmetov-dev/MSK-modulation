@@ -1,31 +1,30 @@
 clc;
-% clear;
+clear;
 
-fid = fopen('../ex.txt', 'r');
-
-data = fscanf(fid, '%f');
-
-figure;
-plot(VarName1), grid on;
+conn = sqlite('../ex.sqlite','readonly');
+sqlquery = 'SELECT * FROM data';
+results = fetch(conn,sqlquery);
+close(conn);
 
 figure;
-plot(VarName2), grid on;
+plot(cell2mat(results(:, 2))), grid on;
 
 figure;
-plot(VarName3), grid on;
+plot(cell2mat(results(:, 3))), grid on;
 
 figure;
-plot(VarName4), grid on;
+plot(cell2mat(results(:, 4))), grid on;
 
 figure;
-plot(VarName5), grid on;
+plot(cell2mat(results(:, 5))), grid on;
 
 figure;
-plot(VarName6), grid on;
+plot(cell2mat(results(:, 6))), grid on;
 
 figure;
-plot(VarName7), grid on;
+plot(cell2mat(results(:, 7))), grid on;
 
-scatterplot ( hilbert (VarName7)), grid on;
+figure;
+plot(cell2mat(results(:, 8))), grid on;
 
-fclose(fid);
+scatterplot (cell2mat(results(:, 8))), grid on;
