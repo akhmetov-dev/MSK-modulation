@@ -27,7 +27,12 @@ count = int(input("Input length of message: "))            # Количеств�
 if count <= 0 : quit()
 
 t = float(input("Input value of period: "))
+
 fs = 1 / t
+if fs % count != 0 :
+    while fs % count != 0 :
+        fs = fs + 1
+
 f0 = fs * 0.02                                             # Частота первой синусоиды
 f1 = 0.6 * f0                                              # Частота второй синусоиды
 
